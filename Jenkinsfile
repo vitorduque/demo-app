@@ -53,8 +53,6 @@ podTemplate(label: 'jenkins-pipeline',
       container('node-karma-chrome'){
           stage('build') {
             sh 'npm install'
-            sh 'npm test'
-            sh 'npm run build'
           }
       }
     }
