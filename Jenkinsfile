@@ -1,7 +1,6 @@
 podTemplate(label: 'jenkins-pipeline',
     containers: [
         containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true, command: 'cat'),
-        containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave:3.10-1-alpine', args: '${computer.jnlpmac} ${computer.name}', workingDir: '/home/jenkins'),
         containerTemplate(name: 'docker', image: 'docker:latest', ttyEnabled: true, command: 'cat'),
         containerTemplate(name: 'envsubst', image: 'acm1/gettext:latest', ttyEnabled: true, command: 'cat'),
         containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:latest', command: 'cat', ttyEnabled: true)
