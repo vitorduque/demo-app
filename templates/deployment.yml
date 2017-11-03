@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app-ui-deployment
+  namespace: ${NAMESPACE}
+  labels:
+    app: app-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-ui
+  template:
+    metadata:
+      labels:
+        app: app-ui
+    spec:
+      containers:
+      - name: app-ui
+        image: vtrduque/vue-app:${BUILD_NUMBER}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
