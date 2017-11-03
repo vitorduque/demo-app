@@ -1,8 +1,8 @@
 podTemplate(label: 'jenkins-pipeline',
     containers: [
         containerTemplate(
-            name: 'node-karma-chrome',
-            image: 'hellohq/node-karma-chrome:latest',
+            name: 'node',
+            image: 'node:latest',
             ttyEnabled: true,
             command: 'cat'
         ),
@@ -50,7 +50,7 @@ podTemplate(label: 'jenkins-pipeline',
     }
 
     stage('NPM'){
-      container('node-karma-chrome'){
+      container('node'){
           stage('build') {
             sh 'npm install'
           }
