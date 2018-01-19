@@ -12,6 +12,8 @@ podTemplate(label: 'jenkins-pipeline',
 
 def pipeline = new io.vtrduque.Pipeline()
 
+pipeline.helloWorld()
+
 {
   node('jenkins-pipeline'){
 
