@@ -6,7 +6,11 @@ podTemplate(label: 'jenkins-pipeline',
         containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:latest', command: 'cat', ttyEnabled: true)
     ],
     volumes:[hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
-  )
+)
+
+@Library('github.com/vtrduque/pipeline-lib')
+
+def pipeline = new io.vtrduque.Pipeline()
 
 {
   node('jenkins-pipeline'){
@@ -19,6 +23,17 @@ podTemplate(label: 'jenkins-pipeline',
     stage('Checkout'){
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
+
+      def inputFile = readFile('config.json')
+      def config = new groovy.json.JsonSlurperClassic().parseText(inputFile)
+
+
+      println "pipeline config ==> ${config}"
+
+      if (!config.pipeline.enabled) {
+        println "pipeline disabled"
+        return
+      }
     }
 
     stage('NPM'){
