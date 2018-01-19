@@ -27,13 +27,11 @@ podTemplate(label: 'jenkins-pipeline',
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
 
-      def inputFile = readFile('config.json')
-      def config = new groovy.json.JsonSlurperClassic().parseText(inputFile)
-
+      config = readJSON file: 'config.json'
 
       println "pipeline config ==> ${config}"
 
-      if (!config.pipeline.enabled) {
+      if (!config["pipeline"]["pipeline"]) {
         println "pipeline disabled"
         return
       }
