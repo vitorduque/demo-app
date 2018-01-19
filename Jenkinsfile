@@ -1,4 +1,4 @@
-@Library('github.com/vtrduque/pipeline-lib@master')
+@Library('github.com/vtrduque/pipeline-lib@master') _
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
