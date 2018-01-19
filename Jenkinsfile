@@ -31,7 +31,7 @@ podTemplate(label: 'jenkins-pipeline',
 
       println "pipeline config ==> ${config}"
 
-      if (!config["pipeline"]["pipeline"]) {
+      if (!config["pipeline"]["enabled"]) {
         println "pipeline disabled"
         return
       }
