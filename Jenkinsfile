@@ -1,3 +1,5 @@
+#!/usr/bin/groovy
+
 @Library('github.com/vtrduque/pipeline-lib@master') _
 
 podTemplate(label: 'jenkins-pipeline',
@@ -9,8 +11,6 @@ podTemplate(label: 'jenkins-pipeline',
     ],
     volumes:[hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 )
-
-def pipeline = new io.vtrduque.Pipeline()
 
 {
   node('jenkins-pipeline'){
