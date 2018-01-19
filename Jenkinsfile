@@ -10,7 +10,7 @@ podTemplate(label: 'jenkins-pipeline',
 
 @Library('github.com/vtrduque/pipeline-lib@master')
 
-def pipeline = new io.vtrduque.Pipeline()
+//def pipeline = new io.vtrduque.Pipeline()
 
 {
   node('jenkins-pipeline'){
