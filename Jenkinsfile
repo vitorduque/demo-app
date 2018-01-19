@@ -1,3 +1,5 @@
+@Library('github.com/vtrduque/pipeline-lib@master')
+
 podTemplate(label: 'jenkins-pipeline',
     containers: [
         containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true, command: 'cat'),
@@ -7,8 +9,6 @@ podTemplate(label: 'jenkins-pipeline',
     ],
     volumes:[hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 )
-
-//@Library('github.com/vtrduque/pipeline-lib@master')
 
 //def pipeline = new io.vtrduque.Pipeline()
 
