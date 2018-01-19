@@ -12,8 +12,6 @@ podTemplate(label: 'jenkins-pipeline',
 
 def pipeline = new io.vtrduque.Pipeline()
 
-pipeline.helloWorld()
-
 {
   node('jenkins-pipeline'){
 
@@ -23,6 +21,9 @@ pipeline.helloWorld()
     def fullName
 
     stage('Checkout'){
+
+      pipeline.helloWorld()
+
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
 
