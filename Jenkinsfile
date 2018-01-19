@@ -33,7 +33,7 @@ podTemplate(label: 'jenkins-pipeline',
 
       if (!config["pipeline"]["enabled"]) {
         println "pipeline disabled"
-        sh "exit 1"
+        sh "exit 0"
       }
     }
 
