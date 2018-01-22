@@ -3,7 +3,7 @@
 @Library('github.com/vtrduque/pipeline-lib@master') _
 //library 'pipeline-lib'
 
-import io.vtrduque
+import io.vtrduque.Pipeline
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
