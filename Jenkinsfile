@@ -5,6 +5,8 @@
 
 import io.vtrduque.Pipeline
 
+def pipeline = new Pipeline()
+
 podTemplate(label: 'jenkins-pipeline',
     containers: [
         containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true, command: 'cat'),
@@ -15,7 +17,6 @@ podTemplate(label: 'jenkins-pipeline',
     volumes:[hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 )
 
-def pipeline = new Pipeline()
 
 {
   node('jenkins-pipeline'){
