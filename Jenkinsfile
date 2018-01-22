@@ -5,6 +5,9 @@
 
 library 'pipeline-lib'
 
+
+import io.vtrduque
+
 podTemplate(label: 'jenkins-pipeline',
     containers: [
         containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true, command: 'cat'),
