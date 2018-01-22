@@ -12,7 +12,7 @@ podTemplate(label: 'jenkins-pipeline',
     volumes:[hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 )
 
-//def pipeline = new io.vtrduque.Pipeline()
+def pipeline = new io.vtrduque.Pipeline()
 
 {
   node('jenkins-pipeline'){
