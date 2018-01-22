@@ -1,8 +1,6 @@
 #!/usr/bin/groovy
 
-//@Library('https://github.com/vtrduque/pipeline-lib@master') _
-
-library('pipeline-lib')
+@Library('https://github.com/vtrduque/pipeline-lib@master') _
 
 def pipeline = new io.vtrduque.Pipeline()
 
