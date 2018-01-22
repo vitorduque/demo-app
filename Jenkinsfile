@@ -1,6 +1,9 @@
 #!/usr/bin/groovy
 
-@Library('github.com/vtrduque/pipeline-lib@master') _
+//@Library('github.com/vtrduque/pipeline-lib@master') _
+
+
+library 'pipeline-lib'
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
