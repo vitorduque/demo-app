@@ -4,9 +4,7 @@
 
 library('pipeline-lib')
 
-import io.vtrduque.Pipeline
-
-def pipeline = new Pipeline()
+def pipeline = new io.vtrduque.Pipeline()
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
