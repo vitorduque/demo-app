@@ -4,7 +4,7 @@
 
 library('pipeline-lib')
 
-import io.vtrduque
+import io.vtrduque.Pipeline
 
 def pipeline = new Pipeline()
 
