@@ -4,8 +4,6 @@
 
 def pipeline = new io.vtrduque.Pipeline()
 
-pipeline.helloWorld()
-
 podTemplate(label: 'jenkins-pipeline',
     containers: [
         containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true, command: 'cat'),
