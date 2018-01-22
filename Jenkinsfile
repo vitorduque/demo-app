@@ -1,11 +1,9 @@
 #!/usr/bin/groovy
 
-@Library('github.com/vtrduque/pipeline-lib@master') _
-//library 'pipeline-lib'
+//@Library('github.com/vtrduque/pipeline-lib@master') _
+library 'pipeline-lib'
 
-import io.vtrduque.Pipeline
-
-def pipeline = new Pipeline()
+def pipeline = new io.vtrduque.Pipeline()
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
