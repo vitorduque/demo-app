@@ -2,7 +2,9 @@
 
 @Library('https://github.com/vtrduque/pipeline-lib@master') _
 
-def pipeline = new io.vtrduque.Pipeline()
+import io.vtrduque
+
+def pipeline = new Pipeline()
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
