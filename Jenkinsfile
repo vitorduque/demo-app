@@ -8,10 +8,10 @@ pipeline.helloWorld()
 
 podTemplate(label: 'jenkins-pipeline',
     containers: [
-        containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true),
-        containerTemplate(name: 'docker', image: 'docker:latest', ttyEnabled: true),
-        containerTemplate(name: 'envsubst', image: 'acm1/gettext:latest', ttyEnabled: true),
-        containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:latest', ttyEnabled: true)
+        containerTemplate(name: 'node', image: 'node:latest', ttyEnabled: true, command: 'cat'),
+        containerTemplate(name: 'docker', image: 'docker:latest', ttyEnabled: true, command: 'cat'),
+        containerTemplate(name: 'envsubst', image: 'acm1/gettext:latest', ttyEnabled: true, command: 'cat'),
+        containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:latest', ttyEnabled: true, command: 'cat')
     ],
     volumes:[hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 )
