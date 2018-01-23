@@ -43,7 +43,7 @@ podTemplate(label: 'jenkins-pipeline',
     stage('NPM'){
       container('node'){
           stage('build') {
-            sh 'npm install'
+            pipeline.npmInstall()
           }
       }
     }
@@ -51,15 +51,11 @@ podTemplate(label: 'jenkins-pipeline',
     stage('Build container'){
       container('docker'){
         stage('Build'){
-          sh "docker build -t ${imageName}  ."
+          pipeline.dockerBuildImage(imageName)
         }
 
         stage('Push to registry'){
-
-          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-            fullName = "$prefix-${scmVars.GIT_COMMIT}"
-            docker.image(imageName).push(fullName)
-          }
+          pipeline.dockerPush('https://registry.hub.docker.com', 'docker-hub', env.BRANCH_NAME, version)
         }
       }
     }
