@@ -21,7 +21,7 @@ podTemplate(label: 'jenkins-pipeline',
   node('jenkins-pipeline'){
 
     def imageName = 'vtrduque/demo-app'
-    def prefix = env.BRANCH_NAME
+    def branch = env.BRANCH_NAME
     def version
     def fullName
 
@@ -29,7 +29,7 @@ podTemplate(label: 'jenkins-pipeline',
 
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
-      fullName = "$prefix-$version"
+      fullName = "$branch-$version"
 
       pipeline.isEnabled()
     }
@@ -56,15 +56,13 @@ podTemplate(label: 'jenkins-pipeline',
 
     stage('Prepare deployment'){
       container('envsubst'){
-        pipeline.prepareDeploy(prefix, imageName)
+        pipeline.prepareDeploy(branch, imageName)
       }
     }
 
     stage('Deploy to k8s cluster'){
       container('kubectl'){
-        if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'master') {
-          sh "kubectl apply -f .generated/deployment.yml"
-        }
+        pipeline.deployToKubernetes(branch)
       }
     }
 
