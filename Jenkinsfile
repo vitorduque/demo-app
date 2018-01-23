@@ -56,7 +56,7 @@ podTemplate(label: 'jenkins-pipeline',
 
     stage('Prepare deployment'){
       container('envsubst'){
-        pipeline.prepareDeploy(branch, imageName)
+        pipeline.prepareDeploy(branch, fullName)
       }
     }
 
