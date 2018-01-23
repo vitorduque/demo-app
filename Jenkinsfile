@@ -30,7 +30,7 @@ podTemplate(label: 'jenkins-pipeline',
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
 
-      pipeline.disabled?()
+      pipeline.isEnabled()
     }
 
     stage('NPM'){
