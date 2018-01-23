@@ -43,7 +43,7 @@ podTemplate(label: 'jenkins-pipeline',
     stage('NPM'){
       container('node'){
           stage('build') {
-            pipeline.npmInstall()
+            sh 'npm install'
           }
       }
     }
