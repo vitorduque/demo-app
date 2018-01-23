@@ -44,7 +44,7 @@ podTemplate(label: 'jenkins-pipeline',
     stage('Build container'){
       container('docker'){
         stage('Build'){
-          pipeline.dockerBuildImage("$imageName")
+          pipeline.dockerBuildImage(imageName)
         }
 
         stage('Push to registry'){
