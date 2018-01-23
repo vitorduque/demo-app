@@ -29,6 +29,7 @@ podTemplate(label: 'jenkins-pipeline',
 
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
+      fullName = "$prefix-$version"
 
       pipeline.isEnabled()
     }
@@ -48,20 +49,14 @@ podTemplate(label: 'jenkins-pipeline',
         }
 
         stage('Push to registry'){
-          pipeline.dockerPush('https://registry.hub.docker.com', 'docker-hub', env.BRANCH_NAME, version)
+          //pipeline.dockerPush('https://registry.hub.docker.com', 'docker-hub', env.BRANCH_NAME, version)
         }
       }
     }
 
     stage('Prepare deployment'){
       container('envsubst'){
-        if (env.BRANCH_NAME == 'dev') {
-          sh "sh deploy.sh $fullName develop"
-          sh "cat .generated/deployment.yml"
-        }else if (env.BRANCH_NAME == 'master') {
-          sh "sh deploy.sh $fullName prod"
-          sh "cat .generated/deployment.yml"
-        }
+        pipeline.prepareDeploy(prefix, imageName)
       }
     }
 
