@@ -30,14 +30,7 @@ podTemplate(label: 'jenkins-pipeline',
       scmVars = checkout scm
       version = "${scmVars.GIT_COMMIT}"
 
-      config = readJSON file: 'config.json'
-
-      println "pipeline config ==> ${config}"
-
-      if (!config["pipeline"]["enabled"]) {
-        println "pipeline disabled"
-        sh "exit 0"
-      }
+      pipeline.disabled?()
     }
 
     stage('NPM'){
